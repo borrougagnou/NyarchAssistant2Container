@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>moe.nyarchlinux.assistant.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <launchable type="desktop-id">moe.nyarchlinux.assistant.desktop</launchable>
+  <name>Nyarch Assistant</name>
+  <name xml:lang="zh-Hant-TW">Nyarch Assistant</name>
+  <description>
+    <p>Your personal waifu always at your service to help you with your system!</p>
+    <p xml:lang="zh-Hant-TW">強大的二次元老婆在此為您服務！</p>
+  </description>
+  <summary>Your AI-Powered System Assistant</summary>
+  <summary xml:lang="zh-Hant-TW">您專屬的人工智慧夥伴</summary>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/nyarchlinux/nyarchassistant/master/data/screenshots/screenshot1.png</image>
+      <caption>Chat page 1</caption>
+      <caption xml:lang="zh-Hant-TW">第一頁</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/nyarchlinux/nyarchassistant/master/data/screenshots/screenshot2.png</image>
+      <caption>Chat page 2</caption>
+      <caption xml:lang="zh-Hant-TW">第二頁</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/nyarchlinux/nyarchassistant/master/data/screenshots/screenshot3.png</image>
+      <caption>Chat page 3</caption>
+      <caption xml:lang="zh-Hant-TW">第三頁</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/nyarchlinux/nyarchassistant/master/data/screenshots/screenshot4.png</image>
+      <caption>Chat page 4</caption>
+      <caption xml:lang="zh-Hant-TW">第四頁</caption>
+    </screenshot>
+  </screenshots>
+  <branding>
+    <color type="primary" scheme_preference="light">#99c1f1</color>
+    <color type="primary" scheme_preference="dark">#003d81</color>
+  </branding>
+  <url type="homepage">https://github.com/nyarchlinux/nyarchassistant</url>
+  <url type="bugtracker">https://github.com/nyarchlinux/nyarchassistant/issues</url>
+  <content_rating type="oars-1.0"/>
+  <releases>
+    <release version="1.0.2" date="2025-10-16">
+      <description>
+        <ul>
+          <li>Update GNOME 49 runtime</li>
+          <li>Add custom body for OpenAI handler</li>
+          <li>Add ability to remember profile per chat</li>
+          <li>Preinstall openai module</li>
+          <li>Fix miscellaneous bugs</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.1" date="2025-08-03">
+      <description>
+        <ul>
+          <li>Bug fixes</li>
+          <li xml:lang="zh-Hant-TW">修正各種錯誤</li>
+          <li xml:lang="zh-Hans-CN">错误修复</li>
+          <li xml:lang="tr">Hata düzeltmeleri</li>
+          <li xml:lang="sv">Bugfixar</li>
+          <li xml:lang="ro">Corectarea erorilor</li>
+          <li xml:lang="pt-BR">Correções de bugs</li>
+          <li xml:lang="pt">Correções de bugs</li>
+          <li xml:lang="pl">Poprawki błędów</li>
+          <li xml:lang="ko">버그 수정</li>
+          <li xml:lang="ja">バグ修正</li>
+          <li xml:lang="id">Perbaikan bug</li>
+          <li xml:lang="hu">Hibajavítások</li>
+          <li xml:lang="fr">Corrections de bugs</li>
+          <li xml:lang="es">Corrección de errores</li>
+          <li xml:lang="cs">Opravy chyb</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0" date="2025-07-29">
+      <description>
+        <ul>
+          <li>Mini Apps support! Extensions can now show custom mini apps on the sidebar</li>
+          <li>Added integrated browser Mini App: browse the web directly in Newelle and attach web pages</li>
+          <li>Improved integrated file manager, supporting multiple file operations</li>
+          <li>Integrated file editor: edit files and codeblocks directly in Newelle</li>
+          <li>Integrated Terminal mini app: open the terminal directly in Newelle</li>
+          <li>Programmable prompts: add dynamic content to prompts with conditionals and random strings</li>
+          <li>Add ability to manually edit chat name</li>
+          <li>Minor bug fixes</li>
+          <li>Added support for multiple languages for Kokoro TTS and Whisper.CPP</li>
+          <li>Run HTML/CSS/JS websites directly in app</li>
+          <li>New animation on chat change</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.9.8" date="2025-06-03">
+      <description>
+        <ul>
+          <li>Bug fixes</li>
+          <li xml:lang="zh-Hant-TW">修正各種錯誤</li>
+          <li xml:lang="zh-Hans-CN">错误修复</li>
+          <li xml:lang="tr">Hata düzeltmeleri</li>
+          <li xml:lang="sv">Bugfixar</li>
+          <li xml:lang="ro">Corectarea erorilor</li>
+          <li xml:lang="pt-BR">Correções de bugs</li>
+          <li xml:lang="pt">Correções de bugs</li>
+          <li xml:lang="pl">Poprawki błędów</li>
+          <li xml:lang="ko">버그 수정</li>
+          <li xml:lang="ja">バグ修正</li>
+          <li xml:lang="id">Perbaikan bug</li>
+          <li xml:lang="hu">Hibajavítások</li>
+          <li xml:lang="fr">Corrections de bugs</li>
+          <li xml:lang="es">Corrección de errores</li>
+          <li xml:lang="cs">Opravy chyb</li>
+          <li>Small improvements</li>
+          <li xml:lang="zh-Hant-TW">小小改良</li>
+          <li xml:lang="zh-Hans-CN">小改进</li>
+          <li xml:lang="tr">Küçük iyileştirmeler</li>
+          <li xml:lang="sv">Små förbättringar</li>
+          <li xml:lang="ro">Îmbunătățiri mici</li>
+          <li xml:lang="pt-BR">Pequenas melhorias</li>
+          <li xml:lang="pt">Pequenas melhorias</li>
+          <li xml:lang="pl">Drobne ulepszenia</li>
+          <li xml:lang="ko">작은 개선 사항</li>
+          <li xml:lang="ja">小さな改善</li>
+          <li xml:lang="id">Perbaikan kecil</li>
+          <li xml:lang="hu">Apró fejlesztések</li>
+          <li xml:lang="fr">Petites améliorations</li>
+          <li xml:lang="es">Pequeñas mejoras</li>
+          <li xml:lang="cs">Malá vylepšení</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.9.7" date="2025-05-24">
+      <description>
+        <ul>
+          <li>Improve local documents reading and loading performances</li>
+          <li xml:lang="zh-Hant-TW">改善檔案閱讀理解速度</li>
+          <li xml:lang="zh-Hans-CN">改善本地文档阅读和加载性能</li>
+          <li xml:lang="tr">Yerel belge okuma ve yükleme performanslarını iyileştir</li>
+          <li xml:lang="sv">Förbättra läsning och laddning av lokala dokument</li>
+          <li xml:lang="ro">Îmbunătățiți performanțele de citire și încărcare a documentelor locale</li>
+          <li xml:lang="pt-BR">Melhorar o desempenho de leitura e carregamento de documentos locais</li>
+          <li xml:lang="pt">Melhorar a leitura de documentos locais e o desempenho de carregamento</li>
+          <li xml:lang="pl">Poprawa wydajności czytania i ładowania lokalnych dokumentów</li>
+          <li xml:lang="ko">로컬 문서 읽기 및 로드 성능 향상</li>
+          <li xml:lang="ja">ローカルドキュメントの読み込みとロードのパフォーマンスを改善</li>
+          <li xml:lang="id">Tingkatkan kinerja pembacaan dan pemuatan dokumen lokal</li>
+          <li xml:lang="hu">A helyi dokumentumok olvasási és betöltési teljesítményének javítása</li>
+          <li xml:lang="fr">Améliorer les performances de lecture et de chargement des documents locaux</li>
+          <li xml:lang="es">Mejorar el rendimiento de lectura y carga de documentos locales</li>
+          <li xml:lang="cs">Vylepšení výkonu čtení a načítání lokálních dokumentů</li>
+          <li>Add option to send with CTRL+Enter</li>
+          <li xml:lang="zh-Hant-TW">新增 CTRL＋Enter 快捷鍵</li>
+          <li xml:lang="zh-Hans-CN">添加使用 CTRL+Enter 发送的选项</li>
+          <li xml:lang="tr">CTRL+Enter ile gönderme seçeneği ekle</li>
+          <li xml:lang="sv">Lägg till alternativ för att skicka med CTRL+Enter</li>
+          <li xml:lang="ro">Adăugați opțiunea de a trimite cu CTRL+Enter</li>
+          <li xml:lang="pt-BR">Adicionar opção de enviar com CTRL+Enter</li>
+          <li xml:lang="pt">Adicionar opção de envio com CTRL+Enter</li>
+          <li xml:lang="pl">Dodaj opcję wysyłania za pomocą CTRL+Enter</li>
+          <li xml:lang="ko">CTRL+Enter로 전송하는 옵션 추가</li>
+          <li xml:lang="ja">CTRL+Enterで送信するオプションを追加</li>
+          <li xml:lang="id">Tambahkan opsi untuk mengirim dengan CTRL+Enter</li>
+          <li xml:lang="hu">Hozzáadva a CTRL+Enter billentyűvel való küldés lehetősége</li>
+          <li xml:lang="fr">Ajouter l'option d'envoyer avec CTRL+Entrée</li>
+          <li xml:lang="es">Añadir opción para enviar con CTRL+Enter</li>
+          <li xml:lang="cs">Přidat možnost odesílání pomocí CTRL+Enter</li>
+          <li>Improve codeblocks</li>
+          <li xml:lang="zh-Hant-TW">改善程式碼區塊顯示</li>
+          <li xml:lang="zh-Hans-CN">改进代码块</li>
+          <li xml:lang="tr">Kod bloklarını iyileştir</li>
+          <li xml:lang="sv">Förbättra kodblock</li>
+          <li xml:lang="ro">Îmbunătățiți blocurile de cod</li>
+          <li xml:lang="pt-BR">Melhorar blocos de código</li>
+          <li xml:lang="pt">Melhorar blocos de código</li>
+          <li xml:lang="pl">Ulepsz bloki kodu</li>
+          <li xml:lang="ko">코드 블록 개선</li>
+          <li xml:lang="ja">コードブロックを改善</li>
+          <li xml:lang="id">Tingkatkan blok kode</li>
+          <li xml:lang="hu">Kódblokkok fejlesztése</li>
+          <li xml:lang="fr">Améliorer les blocs de code</li>
+          <li xml:lang="es">Mejorar bloques de código</li>
+          <li xml:lang="cs">Vylepšit bloky kódu</li>
+          <li>Fix Kokoro TTS</li>
+          <li xml:lang="zh-Hant-TW">修復 Kokoro 文本轉語音</li>
+          <li xml:lang="zh-Hans-CN">修复 Kokoro TTS</li>
+          <li xml:lang="tr">Kokoro TTS düzeltmesi</li>
+          <li xml:lang="sv">Fixa Kokoro TTS</li>
+          <li xml:lang="ro">Rezolvă eroarea Kokoro TTS</li>
+          <li xml:lang="pt-BR">Corrigir Kokoro TTS</li>
+          <li xml:lang="pt">Corrigir Kokoro TTS</li>
+          <li xml:lang="pl">Napraw Kokoro TTS</li>
+          <li xml:lang="ko">코코로 TTS 수정</li>
+          <li xml:lang="ja">Kokoro TTSを修正</li>
+          <li xml:lang="id">Perbaiki Kokoro TTS</li>
+          <li xml:lang="hu">Kokoro TTS javítása</li>
+          <li xml:lang="fr">Correction du TTS Kokoro</li>
+          <li xml:lang="es">Arreglar Kokoro TTS</li>
+          <li xml:lang="cs">Opravit Kokoro TTS</li>
+          <li>Remove emoji from TTS</li>
+          <li xml:lang="zh-Hant-TW">從文本轉語音移除表情符號</li>
+          <li xml:lang="zh-Hans-CN">从 TTS 中移除表情符号</li>
+          <li xml:lang="tr">Metinden Konuşmaya'dan emojiyi kaldır</li>
+          <li xml:lang="sv">Ta bort emoji från TTS</li>
+          <li xml:lang="ro">Elimină emoji din TTS</li>
+          <li xml:lang="pt-BR">Remover emoji do TTS</li>
+          <li xml:lang="pt">Remover emoji do TTS</li>
+          <li xml:lang="pl">Usuń emoji z TTS</li>
+          <li xml:lang="ko">TTS에서 이모지 제거</li>
+          <li xml:lang="ja">TTSから絵文字を削除</li>
+          <li xml:lang="id">Hapus emoji dari TTS</li>
+          <li xml:lang="hu">Hangulatjelek eltávolítása a TTS-ből</li>
+          <li xml:lang="fr">Supprimer les emojis du TTS</li>
+          <li xml:lang="es">Eliminar emojis de TTS</li>
+          <li xml:lang="cs">Odebrat emotikony z TTS</li>
+          <li>Set API keys as password fields</li>
+          <li xml:lang="zh-Hant-TW">設定 API 金鑰為「密碼」型輸入框</li>
+          <li xml:lang="zh-Hans-CN">将 API 密钥设置为密码字段</li>
+          <li xml:lang="tr">API anahtarlarını şifre alanları olarak ayarla</li>
+          <li xml:lang="sv">Ställ in API-nycklar som lösenordsfält</li>
+          <li xml:lang="ro">Setați cheile API ca câmpuri de parolă</li>
+          <li xml:lang="pt-BR">Definir chaves de API como campos de senha</li>
+          <li xml:lang="pt">Definir chaves de API como campos de senha</li>
+          <li xml:lang="pl">Ustaw klucze API jako pola hasła</li>
+          <li xml:lang="ko">API 키를 비밀번호 필드로 설정</li>
+          <li xml:lang="ja">APIキーをパスワードフィールドとして設定</li>
+          <li xml:lang="id">Atur kunci API sebagai bidang kata sandi</li>
+          <li xml:lang="hu">API kulcsok jelszómezőként való beállítása</li>
+          <li xml:lang="fr">Définir les clés API comme champs de mot de passe</li>
+          <li xml:lang="es">Configurar claves API como campos de contraseña</li>
+          <li xml:lang="cs">Nastavit API klíče jako pole pro hesla</li>
+          <li>Add thinking support for Gemini</li>
+          <li xml:lang="zh-Hant-TW">新增 Gemini 思考支援</li>
+          <li xml:lang="zh-Hans-CN">为 Gemini 添加思考支持</li>
+          <li xml:lang="tr">Gemini için düşünce desteği ekle</li>
+          <li xml:lang="sv">Lägg till tänkandestöd för Gemini</li>
+          <li xml:lang="ro">Adăugați suport pentru gândire pentru Gemini</li>
+          <li xml:lang="pt-BR">Adicionar suporte a pensamento para Gemini</li>
+          <li xml:lang="pt">Adicionar suporte a pensamento para Gemini</li>
+          <li xml:lang="pl">Dodaj wsparcie myślenia dla Gemini</li>
+          <li xml:lang="ko">Gemini에 사고 지원 추가</li>
+          <li xml:lang="ja">Geminiの思考サポートを追加</li>
+          <li xml:lang="id">Tambahkan dukungan berpikir untuk Gemini</li>
+          <li xml:lang="hu">Gondolkodási támogatás hozzáadása a Geminihez</li>
+          <li xml:lang="fr">Ajouter le support de la pensée pour Gemini</li>
+          <li xml:lang="es">Añadir soporte de pensamiento para Gemini</li>
+          <li xml:lang="cs">Přidat podporu myšlení pro Gemini</li>
+          <li>Updated translations</li>
+          <li xml:lang="zh-Hant-TW">更新翻譯</li>
+          <li xml:lang="zh-Hans-CN">更新了翻译</li>
+          <li xml:lang="tr">Güncellenmiş çeviriler</li>
+          <li xml:lang="sv">Uppdaterade översättningar</li>
+          <li xml:lang="ro">Traduceri actualizate</li>
+          <li xml:lang="pt-BR">Traduções atualizadas</li>
+          <li xml:lang="pt">Traduções atualizadas</li>
+          <li xml:lang="pl">Zaktualizowane tłumaczenia</li>
+          <li xml:lang="ko">번역 업데이트</li>
+          <li xml:lang="ja">翻訳を更新</li>
+          <li xml:lang="id">Terjemahan diperbarui</li>
+          <li xml:lang="hu">Frissített fordítások</li>
+          <li xml:lang="fr">Traductions mises à jour</li>
+          <li xml:lang="es">Traducciones actualizadas</li>
+          <li xml:lang="cs">Aktualizované překlady</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.9.6" date="2025-05-10">
+      <description>
+        <ul>
+          <li>Added new features</li>
+          <li xml:lang="zh-Hant-TW">新增更多新功能</li>
+          <li xml:lang="zh-Hans-CN">新增功能</li>
+          <li xml:lang="tr">Yeni özellikler eklendi</li>
+          <li xml:lang="sv">Nya funktioner tillagda</li>
+          <li xml:lang="ro">Funcționalități noi adăugate</li>
+          <li xml:lang="pt-BR">Novas funcionalidades adicionadas</li>
+          <li xml:lang="pt">Novas funcionalidades adicionadas</li>
+          <li xml:lang="pl">Dodano nowe funkcje</li>
+          <li xml:lang="ko">새로운 기능 추가</li>
+          <li xml:lang="ja">新機能を追加</li>
+          <li xml:lang="id">Menambahkan fitur baru</li>
+          <li xml:lang="hu">Új funkciók hozzáadva</li>
+          <li xml:lang="fr">Nouvelles fonctionnalités ajoutées</li>
+          <li xml:lang="es">Nuevas características añadidas</li>
+          <li xml:lang="cs">Přidány nové funkce</li>
+          <li>Bug fixes</li>
+          <li xml:lang="zh-Hant-TW">修正各種錯誤</li>
+          <li xml:lang="zh-Hans-CN">错误修复</li>
+          <li xml:lang="tr">Hata düzeltmeleri</li>
+          <li xml:lang="sv">Bugfixar</li>
+          <li xml:lang="ro">Corectarea erorilor</li>
+          <li xml:lang="pt-BR">Correções de bugs</li>
+          <li xml:lang="pt">Correções de bugs</li>
+          <li xml:lang="pl">Poprawki błędów</li>
+          <li xml:lang="ko">버그 수정</li>
+          <li xml:lang="ja">バグ修正</li>
+          <li xml:lang="id">Perbaikan bug</li>
+          <li xml:lang="hu">Hibajavítások</li>
+          <li xml:lang="fr">Corrections de bugs</li>
+          <li xml:lang="es">Corrección de errores</li>
+          <li xml:lang="cs">Opravy chyb</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.9.5" date="2025-04-26">
+      <description>
+        <ul>
+          <li>Website reading and web search with SearXNG, DuckDuckGo, and Tavily</li>
+          <li xml:lang="zh-Hant-TW">網站閱讀與支援 SearXNG、DuckDuckGo、與 Tavily 等搜尋引擎</li>
+          <li xml:lang="zh-Hans-CN">使用 SearXNG、DuckDuckGo 和 Tavily 进行网站阅读和网络搜索</li>
+          <li xml:lang="tr">SearXNG, DuckDuckGo ve Tavily ile web sitesi okuma ve web araması</li>
+          <li xml:lang="sv">Webbplatsläsning och webbsökning med SearXNG, DuckDuckGo och Tavily</li>
+          <li xml:lang="ro">Citirea site-urilor web și căutarea pe web cu SearXNG, DuckDuckGo și Tavily</li>
+          <li xml:lang="pt-BR">Leitura de sites e pesquisa na web com SearXNG, DuckDuckGo e Tavily</li>
+          <li xml:lang="pt">Leitura de websites e pesquisa na web com SearXNG, DuckDuckGo e Tavily</li>
+          <li xml:lang="pl">Czytanie stron internetowych i wyszukiwanie w sieci za pomocą SearXNG, DuckDuckGo i Tavily</li>
+          <li xml:lang="ko">SearXNG, DuckDuckGo, Tavily를 이용한 웹사이트 읽기 및 웹 검색</li>
+          <li xml:lang="ja">SearXNG、DuckDuckGo、Tavilyによるウェブサイトの読み取りとウェブ検索</li>
+          <li xml:lang="id">Pembacaan situs web dan pencarian web dengan SearXNG, DuckDuckGo, dan Tavily</li>
+          <li xml:lang="hu">Weboldal olvasás és webes keresés SearXNG, DuckDuckGo és Tavily segítségével</li>
+          <li xml:lang="fr">Lecture de sites web et recherche web avec SearXNG, DuckDuckGo et Tavily</li>
+          <li xml:lang="es">Lectura de sitios web y búsqueda web con SearXNG, DuckDuckGo y Tavily</li>
+          <li xml:lang="cs">Čtení webových stránek a vyhledávání na webu s SearXNG, DuckDuckGo a Tavily</li>
+          <li>Improved LaTeX rendering and document management</li>
+          <li xml:lang="zh-Hant-TW">改良 LaTeX 處理以及文件管理</li>
+          <li xml:lang="zh-Hans-CN">改进了 LaTeX 渲染和文档管理</li>
+          <li xml:lang="tr">Geliştirilmiş LaTeX oluşturma ve belge yönetimi</li>
+          <li xml:lang="sv">Förbättrad LaTeX-rendering och dokumenthantering</li>
+          <li xml:lang="ro">Redare îmbunătățită LaTeX și gestionare documente</li>
+          <li xml:lang="pt-BR">Renderização de LaTeX e gerenciamento de documentos aprimorados</li>
+          <li xml:lang="pt">Renderização de LaTeX e gerenciamento de documentos aprimorados</li>
+          <li xml:lang="pl">Ulepszone renderowanie LaTeX i zarządzanie dokumentami</li>
+          <li xml:lang="ko">LaTeX 렌더링 및 문서 관리 개선</li>
+          <li xml:lang="ja">LaTeXレンダリングとドキュメント管理を改善</li>
+          <li xml:lang="id">Peningkatan rendering LaTeX dan manajemen dokumen</li>
+          <li xml:lang="hu">Javított LaTeX renderelés és dokumentumkezelés</li>
+          <li xml:lang="fr">Amélioration du rendu LaTeX et de la gestion des documents</li>
+          <li xml:lang="es">Renderizado de LaTeX y gestión de documentos mejorados</li>
+          <li xml:lang="cs">Vylepšené vykreslování LaTeXu a správa dokumentů</li>
+          <li>New Thinking Widget and OpenRouter handler</li>
+          <li xml:lang="zh-Hant-TW">新增推理模型的「思考過程」以及 OpenRouter 管理</li>
+          <li xml:lang="zh-Hans-CN">新增思考小部件和 OpenRouter 处理程序</li>
+          <li xml:lang="tr">Yeni Düşünme Pencere Öğesi ve OpenRouter işleyici</li>
+          <li xml:lang="sv">Nytt tänkande-widget och OpenRouter-hanterare</li>
+          <li xml:lang="ro">Widget de gândire nou și handler OpenRouter</li>
+          <li xml:lang="pt-BR">Novo Widget de Pensamento e manipulador OpenRouter</li>
+          <li xml:lang="pt">Novo Widget de Pensamento e manipulador OpenRouter</li>
+          <li xml:lang="pl">Nowy widżet myślenia i obsługa OpenRouter</li>
+          <li xml:lang="ko">새로운 사고 위젯 및 OpenRouter 핸들러</li>
+          <li xml:lang="ja">新しい思考ウィジェットとOpenRouterハンドラー</li>
+          <li xml:lang="id">Widget Pemikiran Baru dan penangan OpenRouter</li>
+          <li xml:lang="hu">Új gondolkodási widget és OpenRouter kezelő</li>
+          <li xml:lang="fr">Nouveau widget de réflexion et gestionnaire OpenRouter</li>
+          <li xml:lang="es">Nuevo Widget de Pensamiento y manejador de OpenRouter</li>
+          <li xml:lang="cs">Nový widget pro přemýšlení a obsluha OpenRouter</li>
+          <li>Vision support for Llama4 on Groq</li>
+          <li xml:lang="zh-Hant-TW">新增 Groq Llama4 圖片辨識支援</li>
+          <li xml:lang="zh-Hans-CN">Groq 上 Llama4 的视觉支持</li>
+          <li xml:lang="tr">Groq üzerinde Llama4 için görsel desteği</li>
+          <li xml:lang="sv">Visionstöd för Llama4 på Groq</li>
+          <li xml:lang="ro">Suport pentru viziune pentru Llama4 pe Groq</li>
+          <li xml:lang="pt-BR">Suporte a visão para Llama4 no Groq</li>
+          <li xml:lang="pt">Suporte a visão para Llama4 no Groq</li>
+          <li xml:lang="pl">Obsługa wizji dla Llama4 na Groq</li>
+          <li xml:lang="ko">Groq의 Llama4에 대한 비전 지원</li>
+          <li xml:lang="ja">Groq上のLlama4のビジョンサポート</li>
+          <li xml:lang="id">Dukungan visi untuk Llama4 di Groq</li>
+          <li xml:lang="hu">Látás támogatás a Llama4-hez Groq-on</li>
+          <li xml:lang="fr">Prise en charge de la vision pour Llama4 sur Groq</li>
+          <li xml:lang="es">Soporte de visión para Llama4 en Groq</li>
+          <li xml:lang="cs">Podpora zraku pro Llama4 na Groq</li>
+          <li>New translations (Traditional Chinese, Bengali, Hindi)</li>
+          <li xml:lang="zh-Hant-TW">新翻譯（繁體中文、孟加拉文、印度文）</li>
+          <li xml:lang="zh-Hans-CN">新翻译（繁体中文、孟加拉语、印地语）</li>
+          <li xml:lang="tr">Yeni çeviriler (Geleneksel Çince, Bengalce, Hintçe)</li>
+          <li xml:lang="sv">Nya översättningar (Traditionell kinesiska, bengali, hindi)</li>
+          <li xml:lang="ro">Traduceri noi (chineză tradițională, bengaleză, hindi)</li>
+          <li xml:lang="pt-BR">Novas traduções (chinês tradicional, bengali, hindi)</li>
+          <li xml:lang="pt">Novas traduções (Chinês Tradicional, Bengali, Hindi)</li>
+          <li xml:lang="pl">Nowe tłumaczenia (tradycyjny chiński, bengalski, hindi)</li>
+          <li xml:lang="ko">새로운 번역 (번체 중국어, 벵골어, 힌디어)</li>
+          <li xml:lang="ja">新しい翻訳（繁体字中国語、ベンガル語、ヒンディー語）</li>
+          <li xml:lang="id">Terjemahan baru (Tionghoa Tradisional, Bengali, Hindi)</li>
+          <li xml:lang="hu">Új fordítások (hagyományos kínai, bengáli, hindi)</li>
+          <li xml:lang="fr">Nouvelles traductions (chinois traditionnel, bengali, hindi)</li>
+          <li xml:lang="es">Nuevas traducciones (chino tradicional, bengalí, hindi)</li>
+          <li xml:lang="cs">Nové překlady (tradiční čínština, bengálština, hindština)</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.9.0" date="2025-04-10">
+      <description>
+        <p>Fixed many bugs, added some features!</p>
+        <p xml:lang="zh-Hant-TW">新增更多新功能以及修正錯誤</p>
+        <p xml:lang="zh-Hans-CN">修复了许多错误，并添加了一些功能！</p>
+        <p xml:lang="tr">Birçok hata düzeltildi, bazı özellikler eklendi!</p>
+        <p xml:lang="sv">Många buggar åtgärdade, några funktioner tillagda!</p>
+        <p xml:lang="ro">Multe erori au fost remediate, au fost adăugate câteva funcționalități!</p>
+        <p xml:lang="pt-BR">Muitos bugs corrigidos, algumas funcionalidades adicionadas!</p>
+        <p xml:lang="pt">Muitos bugs corrigidos, algumas funcionalidades adicionadas!</p>
+        <p xml:lang="pl">Naprawiono wiele błędów, dodano kilka funkcji!</p>
+        <p xml:lang="ko">많은 버그 수정, 일부 기능 추가!</p>
+        <p xml:lang="ja">多くのバグを修正し、いくつかの機能を追加しました！</p>
+        <p xml:lang="id">Banyak bug diperbaiki, beberapa fitur ditambahkan!</p>
+        <p xml:lang="hu">Sok hiba javítva, néhány funkció hozzáadva!</p>
+        <p xml:lang="fr">De nombreux bugs corrigés, quelques fonctionnalités ajoutées !</p>
+        <p xml:lang="es">¡Muchos errores corregidos, algunas características añadidas!</p>
+        <p xml:lang="cs">Opraveno mnoho chyb, přidány některé funkce!</p>
+      </description>
+    </release>
+    <release version="0.8.1" date="2025-03-16">
+      <description>
+        <p>Support for new features and bug fixes</p>
+        <p xml:lang="zh-Hant-TW">新增更多新功能以及修正錯誤</p>
+        <p xml:lang="zh-Hans-CN">支持新功能和错误修复</p>
+        <p xml:lang="tr">Yeni özellikler ve hata düzeltmeleri için destek</p>
+        <p xml:lang="sv">Stöd för nya funktioner och buggfixar</p>
+        <p xml:lang="ro">Suport pentru funcționalități noi și corectarea erorilor</p>
+        <p xml:lang="pt-BR">Suporte para novas funcionalidades e correção de bugs</p>
+        <p xml:lang="pt">Suporte a novas funcionalidades e correções de bugs</p>
+        <p xml:lang="pl">Wsparcie dla nowych funkcji i poprawek błędów</p>
+        <p xml:lang="ko">새로운 기능 및 버그 수정 지원</p>
+        <p xml:lang="ja">新機能とバグ修正のサポート</p>
+        <p xml:lang="id">Dukungan untuk fitur baru dan perbaikan bug</p>
+        <p xml:lang="hu">Új funkciók és hibajavítások támogatása</p>
+        <p xml:lang="fr">Support des nouvelles fonctionnalités et corrections de bugs</p>
+        <p xml:lang="es">Soporte para nuevas funciones y corrección de errores</p>
+        <p xml:lang="cs">Podpora nových funkcí a opravy chyb</p>
+      </description>
+    </release>
+    <release version="0.8.0" date="2025-03-11">
+      <description>
+        <p>Added many new features and bug fixes</p>
+        <p xml:lang="zh-Hant-TW">新增更多新功能以及修正錯誤</p>
+        <p xml:lang="zh-Hans-CN">新增了许多功能并修复了错误</p>
+        <p xml:lang="tr">Birçok yeni özellik ve hata düzeltmesi eklendi</p>
+        <p xml:lang="sv">Många nya funktioner och buggfixar har lagts till</p>
+        <p xml:lang="ro">Au fost adăugate multe funcționalități noi și corecturi de erori</p>
+        <p xml:lang="pt-BR">Muitas novas funcionalidades e correções de bugs adicionadas</p>
+        <p xml:lang="pt">Adicionadas muitas novas funcionalidades e correções de bugs</p>
+        <p xml:lang="pl">Dodano wiele nowych funkcji i poprawek błędów</p>
+        <p xml:lang="ko">많은 새로운 기능 및 버그 수정 추가</p>
+        <p xml:lang="ja">多くの新機能とバグ修正を追加</p>
+        <p xml:lang="id">Menambahkan banyak fitur baru dan perbaikan bug</p>
+        <p xml:lang="hu">Sok új funkció és hibajavítás hozzáadva</p>
+        <p xml:lang="fr">De nombreuses nouvelles fonctionnalités et corrections de bugs ont été ajoutées</p>
+        <p xml:lang="es">Se añadieron muchas nuevas funciones y correcciones de errores</p>
+        <p xml:lang="cs">Přidáno mnoho nových funkcí a opraveny chyby</p>
+      </description>
+    </release>
+    <release version="0.7.0" date="2025-02-06">
+      <description>
+        <p>Added many new features and bug fixes</p>
+        <p xml:lang="zh-Hant-TW">新增更多新功能以及修正錯誤</p>
+        <p xml:lang="zh-Hans-CN">新增了许多功能并修复了错误</p>
+        <p xml:lang="tr">Birçok yeni özellik ve hata düzeltmesi eklendi</p>
+        <p xml:lang="sv">Många nya funktioner och buggfixar har lagts till</p>
+        <p xml:lang="ro">Au fost adăugate multe funcționalități noi și corecturi de erori</p>
+        <p xml:lang="pt-BR">Muitas novas funcionalidades e correções de bugs adicionadas</p>
+        <p xml:lang="pt">Adicionadas muitas novas funcionalidades e correções de bugs</p>
+        <p xml:lang="pl">Dodano wiele nowych funkcji i poprawek błędów</p>
+        <p xml:lang="ko">많은 새로운 기능 및 버그 수정 추가</p>
+        <p xml:lang="ja">多くの新機能とバグ修正を追加</p>
+        <p xml:lang="id">Menambahkan banyak fitur baru dan perbaikan bug</p>
+        <p xml:lang="hu">Sok új funkció és hibajavítás hozzáadva</p>
+        <p xml:lang="fr">De nombreuses nouvelles fonctionnalités et corrections de bugs ont été ajoutées</p>
+        <p xml:lang="es">Se añadieron muchas nuevas funciones y correcciones de errores</p>
+        <p xml:lang="cs">Přidáno mnoho nových funkcí a opraveny chyby</p>
+      </description>
+    </release>
+    <release version="0.6.0" date="2025-01-04">
+      <description>
+        <p>Added many new features and bug fixes</p>
+        <p xml:lang="zh-Hant-TW">新增更多新功能以及修正錯誤</p>
+        <p xml:lang="zh-Hans-CN">新增了许多功能并修复了错误</p>
+        <p xml:lang="tr">Birçok yeni özellik ve hata düzeltmesi eklendi</p>
+        <p xml:lang="sv">Många nya funktioner och buggfixar har lagts till</p>
+        <p xml:lang="ro">Au fost adăugate multe funcționalități noi și corecturi de erori</p>
+        <p xml:lang="pt-BR">Muitas novas funcionalidades e correções de bugs adicionadas</p>
+        <p xml:lang="pt">Adicionadas muitas novas funcionalidades e correções de bugs</p>
+        <p xml:lang="pl">Dodano wiele nowych funkcji i poprawek błędów</p>
+        <p xml:lang="ko">많은 새로운 기능 및 버그 수정 추가</p>
+        <p xml:lang="ja">多くの新機能とバグ修正を追加</p>
+        <p xml:lang="id">Menambahkan banyak fitur baru dan perbaikan bug</p>
+        <p xml:lang="hu">Sok új funkció és hibajavítás hozzáadva</p>
+        <p xml:lang="fr">De nombreuses nouvelles fonctionnalités et corrections de bugs ont été ajoutées</p>
+        <p xml:lang="es">Se añadieron muchas nuevas funciones y correcciones de errores</p>
+        <p xml:lang="cs">Přidáno mnoho nových funkcí a opraveny chyby</p>
+      </description>
+    </release>
+    <release version="0.5.0" date="2024-12-27">
+      <description>
+        <p>Added new features and bug fixes</p>
+        <p xml:lang="zh-Hant-TW">新增更多新功能以及修正錯誤</p>
+        <p xml:lang="zh-Hans-CN">新增功能并修复了错误</p>
+        <p xml:lang="tr">Yeni özellikler ve hata düzeltmeleri eklendi</p>
+        <p xml:lang="sv">Nya funktioner och buggfixar har lagts till</p>
+        <p xml:lang="ro">Funcționalități noi și corecturi de erori adăugate</p>
+        <p xml:lang="pt-BR">Novas funcionalidades e correções de bugs adicionadas</p>
+        <p xml:lang="pt">Adicionadas novas funcionalidades e correções de bugs</p>
+        <p xml:lang="pl">Dodano nowe funkcje i poprawki błędów</p>
+        <p xml:lang="ko">새로운 기능 및 버그 수정 추가</p>
+        <p xml:lang="ja">新機能とバグ修正を追加</p>
+        <p xml:lang="id">Menambahkan fitur baru dan perbaikan bug</p>
+        <p xml:lang="hu">Új funkciók és hibajavítások hozzáadva</p>
+        <p xml:lang="fr">Nouvelles fonctionnalités et corrections de bugs ajoutées</p>
+        <p xml:lang="es">Se añadieron nuevas características y correcciones de errores</p>
+        <p xml:lang="cs">Přidány nové funkce a opraveny chyby</p>
+      </description>
+    </release>
+    <release version="0.4.2" date="2024-12-21">
+      <description>
+        <p>Added new features and bug fixes</p>
+        <p xml:lang="zh-Hant-TW">新增更多新功能以及修正錯誤</p>
+        <p xml:lang="zh-Hans-CN">新增功能并修复了错误</p>
+        <p xml:lang="tr">Yeni özellikler ve hata düzeltmeleri eklendi</p>
+        <p xml:lang="sv">Nya funktioner och buggfixar har lagts till</p>
+        <p xml:lang="ro">Funcționalități noi și corecturi de erori adăugate</p>
+        <p xml:lang="pt-BR">Novas funcionalidades e correções de bugs adicionadas</p>
+        <p xml:lang="pt">Adicionadas novas funcionalidades e correções de bugs</p>
+        <p xml:lang="pl">Dodano nowe funkcje i poprawki błędów</p>
+        <p xml:lang="ko">새로운 기능 및 버그 수정 추가</p>
+        <p xml:lang="ja">新機能とバグ修正を追加</p>
+        <p xml:lang="id">Menambahkan fitur baru dan perbaikan bug</p>
+        <p xml:lang="hu">Új funkciók és hibajavítások hozzáadva</p>
+        <p xml:lang="fr">Nouvelles fonctionnalités et corrections de bugs ajoutées</p>
+        <p xml:lang="es">Se añadieron nuevas características y correcciones de errores</p>
+        <p xml:lang="cs">Přidány nové funkce a opraveny chyby</p>
+      </description>
+    </release>
+    <release version="0.4.1" date="2024-11-16">
+      <description>
+                Updated the g4f library with versioning, added user guides, improved extension browsing, and enhanced model handling.
+            </description>
+      <description xml:lang="zh-Hant-TW">改良 g4f 資料庫的版本管理、使用者說明、擴充功能瀏覽、以及模型處理。</description>
+      <description xml:lang="zh-Hans-CN">更新了 g4f 库并加入了版本控制，增加了用户指南，改进了扩展浏览，并增强了模型处理。</description>
+      <description xml:lang="tr">g4f kütüphanesi sürümlemeyle güncellendi, kullanıcı rehberleri eklendi, uzantı taraması iyileştirildi ve model yönetimi geliştirildi.</description>
+      <description xml:lang="sv">Uppdaterade g4f-biblioteket med versionshantering, lade till användarmanualer, förbättrade bläddring av tillägg och förbättrad modellhantering.</description>
+      <description xml:lang="ro">Biblioteca g4f a fost actualizată cu versiune, au fost adăugate ghiduri de utilizare, navigarea extensiilor a fost îmbunătățită, iar gestionarea modelelor a fost optimizată.</description>
+      <description xml:lang="pt-BR">Biblioteca g4f atualizada com versionamento, guias do usuário adicionados, navegação de extensões aprimorada e tratamento de modelos melhorado.</description>
+      <description xml:lang="pt">Biblioteca g4f atualizada com versionamento, guias do usuário adicionados, navegação de extensões aprimorada e tratamento de modelos melhorado.</description>
+      <description xml:lang="pl">Zaktualizowano bibliotekę g4f o wersjonowanie, dodano instrukcje obsługi, ulepszono przeglądanie rozszerzeń i poprawiono obsługę modeli.</description>
+      <description xml:lang="ko">버전 관리를 통해 g4f 라이브러리를 업데이트하고, 사용자 가이드를 추가하고, 확장 탐색을 개선하고, 모델 처리를 향상했습니다.</description>
+      <description xml:lang="ja">g4fライブラリをバージョン管理で更新し、ユーザーガイドを追加し、拡張機能のブラウジングを改善し、モデル処理を強化しました。</description>
+      <description xml:lang="id">Memperbarui pustaka g4f dengan versioning, menambahkan panduan pengguna, meningkatkan penjelajahan ekstensi, dan menyempurnakan penanganan model.</description>
+      <description xml:lang="hu">Frissült a g4f könyvtár verziózással, felhasználói útmutatók kerültek hozzáadásra, javult a bővítmények böngészése, és a modellkezelés is fejlettebb lett.</description>
+      <description xml:lang="fr">Mise à jour de la bibliothèque g4f avec versioning, ajout de guides utilisateur, amélioration de la navigation des extensions et gestion des modèles améliorée.</description>
+      <description xml:lang="es">Se actualizó la biblioteca g4f con versionado, se agregaron guías de usuario, se mejoró la navegación de extensiones y se optimizó el manejo de modelos.</description>
+      <description xml:lang="cs">Aktualizována knihovna g4f s verzováním, přidány uživatelské příručky, vylepšeno procházení rozšíření a vylepšena správa modelů.</description>
+    </release>
+    <release version="0.4.0" date="2024-11-02">
+      <description>
+                Bug fixes and new features have been implemented. We've modified the extension architecture, added new models, and introduced vision support, along with more capabilities.
+            </description>
+      <description xml:lang="zh-Hant-TW">新增更多新功能以及修正錯誤。我們不但更改了擴充功能架構、新增新模型、以及新增圖片上傳功能等。</description>
+      <description xml:lang="zh-Hans-CN">已实施错误修复和新功能。我们修改了扩展架构，添加了新模型，并引入了视觉支持，以及更多功能。</description>
+      <description xml:lang="tr">Hata düzeltmeleri ve yeni özellikler uygulandı. Uzantı mimarisini değiştirdik, yeni modeller ekledik ve daha fazla yetenekle birlikte görüş desteği sunduk.</description>
+      <description xml:lang="sv">Bugfixar och nya funktioner har implementerats. Vi har ändrat tilläggsarkitekturen, lagt till nya modeller och introducerat visionstöd, tillsammans med fler funktioner.</description>
+      <description xml:lang="ro">Au fost implementate corecturi de erori și funcționalități noi. Am modificat arhitectura extensiei, am adăugat modele noi și am introdus suport pentru viziune, alături de mai multe capabilități.</description>
+      <description xml:lang="pt-BR">Correções de bugs e novas funcionalidades foram implementadas. Modificamos a arquitetura das extensões, adicionamos novos modelos e introduzimos suporte à visão, juntamente com mais recursos.</description>
+      <description xml:lang="pt">Correções de bugs e novas funcionalidades foram implementadas. Modificamos a arquitetura de extensão, adicionamos novos modelos e introduzimos suporte à visão, juntamente com mais capacidades.</description>
+      <description xml:lang="pl">Wdrożono poprawki błędów i nowe funkcje. Zmodyfikowaliśmy architekturę rozszerzeń, dodaliśmy nowe modele i wprowadziliśmy wsparcie wizji, wraz z innymi możliwościami.</description>
+      <description xml:lang="ko">버그 수정 및 새로운 기능이 구현되었습니다. 확장 아키텍처를 수정하고, 새로운 모델을 추가하고, 비전 지원을 도입했으며, 더 많은 기능을 제공합니다.</description>
+      <description xml:lang="ja">バグ修正と新機能が実装されました。拡張機能のアーキテクチャを変更し、新しいモデルを追加し、ビジョンサポートをはじめとする多くの機能が導入されました。</description>
+      <description xml:lang="id">Perbaikan bug dan fitur baru telah diterapkan. Kami telah memodifikasi arsitektur ekstensi, menambahkan model baru, dan memperkenalkan dukungan visi, serta lebih banyak kemampuan.</description>
+      <description xml:lang="hu">Hibajavítások és új funkciók kerültek bevezetésre. Módosítottuk a bővítmény architektúráját, új modelleket adtunk hozzá, és bevezettük a látás támogatást, valamint további képességeket.</description>
+      <description xml:lang="fr">Des corrections de bugs et de nouvelles fonctionnalités ont été implémentées. Nous avons modifié l'architecture des extensions, ajouté de nouveaux modèles et introduit la prise en charge de la vision, ainsi que d'autres capacités.</description>
+      <description xml:lang="es">Se han implementado correcciones de errores y nuevas funciones. Hemos modificado la arquitectura de las extensiones, añadido nuevos modelos e introducido soporte de visión, junto con más capacidades.</description>
+      <description xml:lang="cs">Byly implementovány opravy chyb a nové funkce. Upravili jsme architekturu rozšíření, přidali nové modely a zavedli podporu vidění, spolu s dalšími možnostmi.</description>
+    </release>
+    <release version="0.3.1" date="2024-09-28">
+      <description>
+                Bug fixes
+            </description>
+      <description xml:lang="zh-Hant-TW">修正各種錯誤</description>
+      <description xml:lang="zh-Hans-CN">错误修复</description>
+      <description xml:lang="tr">Hata düzeltmeleri</description>
+      <description xml:lang="sv">Bugfixar</description>
+      <description xml:lang="ro">Corectarea erorilor</description>
+      <description xml:lang="pt-BR">Correções de bugs</description>
+      <description xml:lang="pt">Correções de bugs</description>
+      <description xml:lang="pl">Poprawki błędów</description>
+      <description xml:lang="ko">버그 수정</description>
+      <description xml:lang="ja">バグ修正</description>
+      <description xml:lang="id">Perbaikan bug</description>
+      <description xml:lang="hu">Hibajavítások</description>
+      <description xml:lang="fr">Corrections de bugs</description>
+      <description xml:lang="es">Corrección de errores</description>
+      <description xml:lang="cs">Opravy chyb</description>
+    </release>
+    <release version="0.3" date="2024-08-28">
+      <description>
+                Bug fixes
+            </description>
+      <description xml:lang="zh-Hant-TW">修正各種錯誤</description>
+      <description xml:lang="zh-Hans-CN">错误修复</description>
+      <description xml:lang="tr">Hata düzeltmeleri</description>
+      <description xml:lang="sv">Bugfixar</description>
+      <description xml:lang="ro">Corectarea erorilor</description>
+      <description xml:lang="pt-BR">Correções de bugs</description>
+      <description xml:lang="pt">Correções de bugs</description>
+      <description xml:lang="pl">Poprawki błędów</description>
+      <description xml:lang="ko">버그 수정</description>
+      <description xml:lang="ja">バグ修正</description>
+      <description xml:lang="id">Perbaikan bug</description>
+      <description xml:lang="hu">Hibajavítások</description>
+      <description xml:lang="fr">Corrections de bugs</description>
+      <description xml:lang="es">Corrección de errores</description>
+      <description xml:lang="cs">Opravy chyb</description>
+    </release>
+    <release version="0.2.2" date="2024-08-06">
+      <description>
+				Bug fixes
+			</description>
+      <description xml:lang="zh-Hant-TW">修正各種錯誤</description>
+      <description xml:lang="zh-Hans-CN">错误修复</description>
+      <description xml:lang="tr">Hata düzeltmeleri</description>
+      <description xml:lang="sv">Bugfixar</description>
+      <description xml:lang="ro">Corectarea erorilor</description>
+      <description xml:lang="pt-BR">Correções de bugs</description>
+      <description xml:lang="pt">Correções de bugs</description>
+      <description xml:lang="pl">Poprawki błędów</description>
+      <description xml:lang="ko">버그 수정</description>
+      <description xml:lang="ja">バグ修正</description>
+      <description xml:lang="id">Perbaikan bug</description>
+      <description xml:lang="hu">Hibajavítások</description>
+      <description xml:lang="fr">Corrections de bugs</description>
+      <description xml:lang="es">Corrección de errores</description>
+      <description xml:lang="cs">Opravy chyb</description>
+    </release>
+    <release version="0.2.1" date="2024-08-03">
+      <description>
+				Bug fixes
+			</description>
+      <description xml:lang="zh-Hant-TW">修正各種錯誤</description>
+      <description xml:lang="zh-Hans-CN">错误修复</description>
+      <description xml:lang="tr">Hata düzeltmeleri</description>
+      <description xml:lang="sv">Bugfixar</description>
+      <description xml:lang="ro">Corectarea erorilor</description>
+      <description xml:lang="pt-BR">Correções de bugs</description>
+      <description xml:lang="pt">Correções de bugs</description>
+      <description xml:lang="pl">Poprawki błędów</description>
+      <description xml:lang="ko">버그 수정</description>
+      <description xml:lang="ja">バグ修正</description>
+      <description xml:lang="id">Perbaikan bug</description>
+      <description xml:lang="hu">Hibajavítások</description>
+      <description xml:lang="fr">Corrections de bugs</description>
+      <description xml:lang="es">Corrección de errores</description>
+      <description xml:lang="cs">Opravy chyb</description>
+    </release>
+    <release version="0.2.0" date="2024-08-03">
+      <description>
+				Bug fixes
+			</description>
+      <description xml:lang="zh-Hant-TW">修正各種錯誤</description>
+      <description xml:lang="zh-Hans-CN">错误修复</description>
+      <description xml:lang="tr">Hata düzeltmeleri</description>
+      <description xml:lang="sv">Bugfixar</description>
+      <description xml:lang="ro">Corectarea erorilor</description>
+      <description xml:lang="pt-BR">Correções de bugs</description>
+      <description xml:lang="pt">Correções de bugs</description>
+      <description xml:lang="pl">Poprawki błędów</description>
+      <description xml:lang="ko">버그 수정</description>
+      <description xml:lang="ja">バグ修正</description>
+      <description xml:lang="id">Perbaikan bug</description>
+      <description xml:lang="hu">Hibajavítások</description>
+      <description xml:lang="fr">Corrections de bugs</description>
+      <description xml:lang="es">Corrección de errores</description>
+      <description xml:lang="cs">Opravy chyb</description>
+    </release>
+    <release version="0.1.7" date="2023-07-11">
+      <description>
+				Stable version
+			</description>
+      <description xml:lang="zh-Hant-TW">穩定版本</description>
+      <description xml:lang="zh-Hans-CN">稳定版</description>
+      <description xml:lang="tr">Kararlı sürüm</description>
+      <description xml:lang="sv">Stabil version</description>
+      <description xml:lang="ro">Versiune stabilă</description>
+      <description xml:lang="pt-BR">Versão estável</description>
+      <description xml:lang="pt">Versão estável</description>
+      <description xml:lang="pl">Stabilna wersja</description>
+      <description xml:lang="ko">안정 버전</description>
+      <description xml:lang="ja">安定版</description>
+      <description xml:lang="id">Versi stabil</description>
+      <description xml:lang="hu">Stabil verzió</description>
+      <description xml:lang="fr">Version stable</description>
+      <description xml:lang="es">Versión estable</description>
+      <description xml:lang="cs">Stabilní verze</description>
+    </release>
+    <release version="0.1.6" date="2023-07-08">
+      <description>
+				Added extension
+			</description>
+      <description xml:lang="zh-Hant-TW">已新增擴充功能</description>
+      <description xml:lang="zh-Hans-CN">添加了扩展</description>
+      <description xml:lang="tr">Uzantı eklendi</description>
+      <description xml:lang="sv">Tillägg tillagt</description>
+      <description xml:lang="ro">Extensie adăugată</description>
+      <description xml:lang="pt-BR">Extensão adicionada</description>
+      <description xml:lang="pt">Extensão adicionada</description>
+      <description xml:lang="pl">Dodano rozszerzenie</description>
+      <description xml:lang="ko">확장 추가</description>
+      <description xml:lang="ja">拡張機能を追加</description>
+      <description xml:lang="id">Ekstensi ditambahkan</description>
+      <description xml:lang="hu">Hozzáadott bővítmény</description>
+      <description xml:lang="fr">Extension ajoutée</description>
+      <description xml:lang="es">Extensión añadida</description>
+      <description xml:lang="cs">Přidáno rozšíření</description>
+    </release>
+    <release version="0.1.5" date="2023-07-04">
+      <description>
+				Blacklist of commands
+			</description>
+      <description xml:lang="zh-Hant-TW">指令黑名單</description>
+      <description xml:lang="zh-Hans-CN">命令黑名单</description>
+      <description xml:lang="tr">Komutların kara listesi</description>
+      <description xml:lang="sv">Svartlista över kommandon</description>
+      <description xml:lang="ro">Listă neagră de comenzi</description>
+      <description xml:lang="pt-BR">Lista negra de comandos</description>
+      <description xml:lang="pt">Lista negra de comandos</description>
+      <description xml:lang="pl">Czarna lista poleceń</description>
+      <description xml:lang="ko">명령어 블랙리스트</description>
+      <description xml:lang="ja">コマンドのブラックリスト</description>
+      <description xml:lang="id">Daftar hitam perintah</description>
+      <description xml:lang="hu">Parancsok feketelistája</description>
+      <description xml:lang="fr">Liste noire des commandes</description>
+      <description xml:lang="es">Lista negra de comandos</description>
+      <description xml:lang="cs">Černá listina příkazů</description>
+    </release>
+    <release version="0.1.4" date="2023-06-30">
+      <description>
+				Localization
+			</description>
+      <description xml:lang="zh-Hant-TW">翻譯</description>
+      <description xml:lang="zh-Hans-CN">本地化</description>
+      <description xml:lang="tr">Yerelleştirme</description>
+      <description xml:lang="sv">Lokalisering</description>
+      <description xml:lang="ro">Localizare</description>
+      <description xml:lang="pt-BR">Localização</description>
+      <description xml:lang="pt">Localização</description>
+      <description xml:lang="pl">Lokalizacja</description>
+      <description xml:lang="ko">현지화</description>
+      <description xml:lang="ja">ローカライズ</description>
+      <description xml:lang="id">Lokalisasi</description>
+      <description xml:lang="hu">Lokalizáció</description>
+      <description xml:lang="fr">Localisation</description>
+      <description xml:lang="es">Localización</description>
+      <description xml:lang="cs">Lokalizace</description>
+    </release>
+    <release version="0.1.3" date="2023-06-25">
+      <description>
+				Redesign
+			</description>
+      <description xml:lang="zh-Hant-TW">重新設計</description>
+      <description xml:lang="zh-Hans-CN">重新设计</description>
+      <description xml:lang="tr">Yeniden Tasarım</description>
+      <description xml:lang="sv">Omdesign</description>
+      <description xml:lang="ro">Redesign</description>
+      <description xml:lang="pt-BR">Redesign</description>
+      <description xml:lang="pt">Redesenho</description>
+      <description xml:lang="pl">Przeprojektowanie</description>
+      <description xml:lang="ko">재설계</description>
+      <description xml:lang="ja">再設計</description>
+      <description xml:lang="id">Desain Ulang</description>
+      <description xml:lang="hu">Újratervezés</description>
+      <description xml:lang="fr">Refonte</description>
+      <description xml:lang="es">Rediseño</description>
+      <description xml:lang="cs">Přepracování</description>
+    </release>
+  </releases>
+  <developer_name>NyarchLinux</developer_name>
+  <developer_name xml:lang="zh-Hant-TW">Nyarch Linux</developer_name>
+  <update_contact>https://nyarchlinux.moe/#contact</update_contact>
+</component>

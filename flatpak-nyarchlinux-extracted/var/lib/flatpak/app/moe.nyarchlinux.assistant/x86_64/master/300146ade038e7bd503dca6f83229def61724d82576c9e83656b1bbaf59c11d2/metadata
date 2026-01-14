@@ -1,0 +1,28 @@
+[Application]
+name=moe.nyarchlinux.assistant
+runtime=org.gnome.Platform/x86_64/49
+sdk=org.gnome.Sdk/x86_64/49
+command=nyarchassistant
+
+[Context]
+shared=network;ipc;
+sockets=x11;wayland;pulseaudio;fallback-x11;
+devices=dri;
+filesystems=home;
+
+[Session Bus Policy]
+org.freedesktop.Flatpak=talk
+org.gnome.Shell.Screencast=talk
+
+[Extension moe.nyarchlinux.assistant.Locale]
+directory=share/runtime/locale
+autodelete=true
+locale-subset=true
+
+[Extension moe.nyarchlinux.assistant.Debug]
+directory=lib/debug
+autodelete=true
+no-autodownload=true
+
+[Build]
+built-extensions=moe.nyarchlinux.assistant.Locale;moe.nyarchlinux.assistant.Debug;

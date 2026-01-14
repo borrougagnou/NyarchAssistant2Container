@@ -1,0 +1,27 @@
+[Desktop Entry]
+Name[zh_TW]=Nyarch Assistant
+Name=Nyarch Assistant
+Comment[zh_TW]=強大的二次元老婆在此為您服務
+Comment=Advanced AI waifu to help you
+Exec=nyarchassistant
+Icon=moe.nyarchlinux.assistant
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
+Keywords[cs]=ai;asistent;chat;chatgpt;gpt;llm;ollama;
+Keywords[es]=ia;asistente;chat;chatgpt;gpt;llm;ollama;
+Keywords[fr]=ai;assistant;chat;chatgpt;gpt;llm;ollama;
+Keywords[hu]=ai;asszisztens;csevegés;chatgpt;gpt;llm;ollama;
+Keywords[id]=ai;asisten;chat;chatgpt;gpt;llm;ollama;
+Keywords[ja]=AI;アシスタント;チャット;ChatGPT;GPT;LLM;Ollama;
+Keywords[ko]=ai;assistant;chat;chatgpt;gpt;llm;ollama;
+Keywords[pl]=ai;asystent;czat;chatgpt;gpt;llm;ollama;
+Keywords[pt]=ia;assistente;chat;chatgpt;gpt;llm;ollama;
+Keywords[pt_BR]=ia;assistente;chat;chatgpt;gpt;llm;ollama;
+Keywords[ro]=ai;asistent;chat;chatgpt;gpt;llm;ollama;
+Keywords[sv]=ai;assistent;chatt;chatgpt;gpt;llm;ollama;
+Keywords[tr]=yapay zeka;asistan;sohbet;chatgpt;gpt;llm;ollama;
+Keywords[zh_CN]=ai;助手;聊天;chatgpt;gpt;llm;ollama;
+Keywords[zh_TW]=ai;assistant;chat;chatgpt;gpt;llm;ollama;
+Keywords=ai;assistant;chat;chatgpt;gpt;llm;ollama;
