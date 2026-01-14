@@ -71,7 +71,9 @@ RUN mkdir -p /install/usr/share/nyarchassistant/data/smart-prompts && \
 
 
 
-
+######################
+# this repo is awful #
+#####################
 
 
 
