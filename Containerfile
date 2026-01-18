@@ -103,6 +103,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # Utilities
     dconf-gsettings-backend gsettings-desktop-schemas adwaita-icon-theme \
     git ffmpeg libglib2.0-bin desktop-file-utils \
+    dbus \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy application files from builder
