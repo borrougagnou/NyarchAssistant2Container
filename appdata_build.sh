@@ -9,13 +9,14 @@ echo "🚀 NyarchAssistant AppImage Build Started"
 echo "========================================="
 
 # Configuration
-BUILDDIR="$HOME/project/NyarchAssistant2Container/nyarch-build"
-APPDIR="$HOME/project/NyarchAssistant2Container/NyarchAssistant.AppDir"
-OUTPUT="$HOME/project/NyarchAssistant2Container/NyarchAssistant-1.2.0-x86_64.AppImage"
+BUILDDIR="/tmp/nyarch-build"
+APPDIR="/tmp/NyarchAssistant.AppDir"
+OUTPUT="/tmp/NyarchAssistant-1.2.0-x86_64.AppImage"
 REPO_URL="https://github.com/borrougagnou/NyarchAssistant2Container.git"
+BRANCH="master"
 
 # Cleanup
-rm -rf "$BUILDDIR" "$APPDIR"
+rm -rf "$BUILDDIR" "$APPDIR" "$OUTPUT"
 mkdir -p "$BUILDDIR" "$APPDIR"
 
 #######################################
@@ -65,7 +66,7 @@ echo ""
 echo "🏗️  Step 2/8: Building application with Meson..."
 
 cd "$BUILDDIR"
-git clone --depth 1 -b master "$REPO_URL"
+git clone --depth 1 -b "$BRANCH" "$REPO_URL"
 cd NyarchAssistant2Container
 
 # Build locales
@@ -184,7 +185,6 @@ tar -xzf llamacpp.tar.gz -C "$APPDIR/usr/bin/" 2>/dev/null || true
 echo "✅ Assets downloaded"
 
 
-echo "TO THIS STEP IT'S WORKING OUT OF THE BOX"
 
 #############################
 # STEP 5: Bundle GNOME     #
@@ -238,17 +238,17 @@ echo "✅ GNOME runtime bundled"
 # STEP 6: Patches        #
 ##########################
 
-echo ""
-echo "🔧 Step 6/8: Applying patches..."
-
-# Patch flatpak-spawn check (critical - app crashes without this)
-echo "  - Patching Flatpak detection..."
-SYSTEM_PY="$APPDIR/usr/share/nyarchassistant/nyarchassistant/utility/system.py"
-if [ -f "$SYSTEM_PY" ]; then
-    sed -i '/subprocess.check_output(\["flatpak-spawn"/a\    except FileNotFoundError:\n        return False' "$SYSTEM_PY"
-fi
-
-echo "✅ Patches applied"
+#echo ""
+#echo "🔧 Step 6/8: Applying patches..."
+#
+## Patch flatpak-spawn check (critical - app crashes without this)
+#echo "  - Patching Flatpak detection..."
+#SYSTEM_PY="$APPDIR/usr/share/nyarchassistant/nyarchassistant/utility/system.py"
+#if [ -f "$SYSTEM_PY" ]; then
+#    sed -i '/subprocess.check_output(\["flatpak-spawn"/a\    except FileNotFoundError:\n        return False' "$SYSTEM_PY"
+#fi
+#
+#echo "✅ Patches applied"
 
 ##########################
 # STEP 7: Create AppRun  #
@@ -265,10 +265,17 @@ cat > "$APPDIR/AppRun" << 'APPRUN_EOF'
 SELF=$(readlink -f "$0")
 HERE=${SELF%/*}
 
+# APPDIR for application path detection
+export APPDIR="$HERE"
+
 # Python environment
-export PYTHONHOME="$HERE/usr/venv"
-export PYTHONPATH="$HERE/usr/venv/lib/python3.13/site-packages:$HERE/usr/lib/python3/dist-packages:$PYTHONPATH"
+# DO NOT set PYTHONHOME when using venv - it breaks stdlib location!
+# Instead, add venv's Python binary directly to PATH so it takes priority
 export PATH="$HERE/usr/venv/bin:$HERE/usr/bin:$PATH"
+
+# Add venv's site-packages to PYTHONPATH for imports
+export PYTHONPATH="$HERE/usr/venv/lib/python3.13/site-packages:$HERE/usr/share/nyarchassistant:$HERE/usr/lib/python3/dist-packages:${PYTHONPATH}"
+
 export VIRTUAL_ENV="$HERE/usr/venv"
 export PYTHONUSERBASE="$HERE/usr/venv"
 
@@ -294,12 +301,14 @@ export FLATPAK_DISABLE=1
 export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json:/usr/share/vulkan/icd.d/radeon_icd.json
 
 # Execute application
-exec "$HERE/usr/bin/nyarchassistant" "$@"
+exec "$HERE/usr/venv/bin/python" "$HERE/usr/bin/nyarchassistant" "$@"
 APPRUN_EOF
 
 chmod +x "$APPDIR/AppRun"
 
 echo "✅ AppRun created"
+
+
 
 ############################
 # STEP 8: Optimization     #
@@ -325,6 +334,8 @@ find "$APPDIR/usr/lib" -type d -name test -exec rm -rf {} + 2>/dev/null || true
 
 echo "✅ Optimization complete"
 
+
+
 ###############################
 # STEP 9: Create AppImage     #
 ###############################
@@ -348,7 +359,8 @@ fi
 
 # Create AppImage with compression
 echo "  - Packaging (this may take several minutes)..."
-ARCH=x86_64 ./appimagetool/AppRun "$APPDIR" "$OUTPUT" >/dev/null 2>&1
+#ARCH=x86_64 ./appimagetool/AppRun "$APPDIR" "$OUTPUT" >/dev/null 2>&1
+ARCH=x86_64 ./appimagetool/AppRun "$APPDIR" "$OUTPUT"
 
 chmod +x "$OUTPUT"
 
