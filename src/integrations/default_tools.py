@@ -6,7 +6,7 @@ import threading
 import json 
 from ..ui.widgets import CopyBox
 import subprocess
-from ..utility.system import is_flatpak
+from ..utility.system import is_flatpak, is_appimage, is_snap
 from gi.repository import Gtk, Gio
 from ..ui import load_image_with_callback
 

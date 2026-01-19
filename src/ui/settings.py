@@ -27,7 +27,7 @@ from ..utility.pip import install_module
 
 from .widgets import ComboRowHelper, CopyBox 
 from .widgets import MultilineEntry
-from ..utility.system import can_escape_sandbox, get_spawn_command, open_website, open_folder, is_flatpak 
+from ..utility.system import can_escape_sandbox, get_spawn_command, open_website, open_folder, is_flatpak, is_appimage, is_snap 
 
 from ..controller import NewelleController
 

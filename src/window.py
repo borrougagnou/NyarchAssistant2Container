@@ -47,7 +47,7 @@ from .utility.replacehelper import PromptFormatter, replace_variables, ReplaceHe
 from .utility.profile_settings import get_settings_dict, get_settings_dict_by_groups, restore_settings_from_dict, restore_settings_from_dict_by_groups
 from .utility.audio_recorder import AudioRecorder
 from .utility.media import extract_supported_files
-from .utility.system import is_flatpak
+from .utility.system import is_flatpak, is_appimage, is_snap
 from .ui.screenrecorder import ScreenRecorder
 from .handlers import ErrorSeverity
 from .controller import NewelleController, ReloadType

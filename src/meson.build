@@ -10,7 +10,7 @@ gnome.compile_resources('nyarchassistant',
 )
 
 python = import('python')
-conf = configuration_data() 
+conf = configuration_data()
 conf.set('PYTHON', python.find_installation('python3').path())
 profile = get_option('profile')
 version_full = meson.project_version()
@@ -18,6 +18,7 @@ if profile == 'development'
   version_full += '-' + run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
 endif
 conf.set('VERSION', version_full)
+conf.set('prefix', get_option('prefix'))
 conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('pkgdatadir', pkgdatadir)
 
@@ -130,7 +131,7 @@ tts_sources = [
   'handlers/tts/edge_handler.py',
 ]
 
-stt_sources = [  
+stt_sources = [
   'handlers/stt/__init__.py',
   'handlers/stt/stt.py',
   'handlers/stt/googlesr_handler.py',
@@ -144,7 +145,7 @@ stt_sources = [
   'handlers/stt/vosk_handler.py',
 ]
 
-embedding_sources = [  
+embedding_sources = [
   'handlers/embeddings/__init__.py',
   'handlers/embeddings/embedding.py',
   'handlers/embeddings/wordllama_handler.py',
@@ -154,7 +155,7 @@ embedding_sources = [
   'handlers/embeddings/model2vec.py',
 ]
 
-memory_sources = [  
+memory_sources = [
   'handlers/memory/__init__.py',
   'handlers/memory/memory_handler.py',
   'handlers/memory/memoripy_handler.py',
@@ -163,13 +164,13 @@ memory_sources = [
   'handlers/memory/llamaindex_memory_handler.py',
 ]
 
-rag_sources = [  
+rag_sources = [
   'handlers/rag/__init__.py',
   'handlers/rag/rag_handler.py',
   'handlers/rag/llamaindex_handler.py',
 ]
 
-websearch_sources = [  
+websearch_sources = [
   'handlers/websearch/__init__.py',
   'handlers/websearch/websearch.py',
   'handlers/websearch/searxng.py',

@@ -13,7 +13,7 @@ _ = gettext.gettext
 from ..handler import ErrorSeverity
 
 from .llm import LLMHandler
-from ...utility.system import can_escape_sandbox, get_spawn_command, is_flatpak
+from ...utility.system import can_escape_sandbox, get_spawn_command, is_flatpak, is_appimage, is_snap
 from ...utility.media import extract_image
 from ...utility import get_streaming_extra_setting
 from ...handlers import ExtraSettings

@@ -26,8 +26,43 @@ import locale
 import gettext
 
 VERSION = '@VERSION@'
-pkgdatadir = '@pkgdatadir@'
-localedir = '@localedir@'
+
+# DYNAMIC PATH DETECTION FOR APPIMAGE
+def get_prefix():
+    # Check if Flatpak
+    if os.path.exists('/.flatpak-info'):
+        print("Flatpak detected")
+        return '/app'
+
+    # Check if AppImage
+    if 'APPDIR' in os.environ:
+        prefix = os.path.join(os.environ['APPDIR'], 'usr')
+        print("AppImage detected")
+        if os.path.exists(prefix):
+            return prefix
+
+    # Try to detect dynamically from script location
+    script_path = os.path.abspath(__file__)
+    script_dir = os.path.dirname(script_path)
+    if script_dir.endswith('/bin'):
+        prefix = os.path.dirname(script_dir)
+        if os.path.exists(os.path.join(prefix, 'share')):
+            print("Dynamic path detected")
+            return prefix
+
+    # Fallback to build-time prefix
+    return '@prefix@'
+
+
+# Dynamically set paths
+prefix = get_prefix()
+pkgdatadir = os.path.join(prefix, 'share', 'nyarchassistant')
+localedir = os.path.join(prefix, 'share', 'locale')
+
+if not os.path.exists(pkgdatadir):
+    pkgdatadir = '@pkgdatadir@'
+if not os.path.exists(localedir):
+    localedir = '@localedir@'
 
 sys.path.insert(1, pkgdatadir)
 signal.signal(signal.SIGINT, signal.SIG_DFL)
@@ -39,7 +74,16 @@ if __name__ == '__main__':
     import gi
 
     from gi.repository import Gio
-    resource = Gio.Resource.load(os.path.join(pkgdatadir, 'nyarchassistant.gresource'))
+
+    gresource_path = os.path.join(pkgdatadir, 'nyarchassistant.gresource')
+    if not os.path.exists(gresource_path):
+        print(f"ERROR: GResource not found!", file=sys.stderr)
+        print(f"  Expected: {gresource_path}", file=sys.stderr)
+        print(f"  Detected prefix: {prefix}", file=sys.stderr)
+        print(f"  APPDIR: {os.environ.get('APPDIR', '(not set)')}", file=sys.stderr)
+        sys.exit(1)
+
+    resource = Gio.Resource.load(gresource_path)
     resource._register()
 
     from nyarchassistant import main

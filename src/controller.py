@@ -15,7 +15,7 @@ from .handlers.memory import MemoryHandler
 from .handlers.embeddings import EmbeddingHandler
 from .handlers.websearch import WebSearchHandler
 
-from .utility.system import is_flatpak
+from .utility.system import is_flatpak, is_appimage, is_snap
 from .utility.pip import install_module
 from .utility.profile_settings import get_settings_dict_by_groups
 from .constants import AVAILABLE_INTEGRATIONS, AVAILABLE_WEBSEARCH, DIR_NAME, SCHEMA_ID, PROMPTS, AVAILABLE_STT, AVAILABLE_TTS, AVAILABLE_LLMS, AVAILABLE_RAGS, AVAILABLE_PROMPTS, AVAILABLE_MEMORIES, AVAILABLE_EMBEDDINGS, SETTINGS_GROUPS, restore_handlers
@@ -37,12 +37,19 @@ from .handlers.translator import TranslatorHandler
 from .handlers.avatar import AvatarHandler
 import subprocess
 
-if is_flatpak():
-    BASE_PATH = "/app/data"
-    ACCHAN_PATH = os.path.join(BASE_PATH, "live2d/web/arch-chan.png")
-else:
-    BASE_PATH = "/usr/share/nyarchassistant/data"
-    ACCHAN_PATH = os.path.join(BASE_PATH, "live2d/web/arch-chan.png") 
+def get_base_path():
+    if is_flatpak():
+        return "/app/data"
+    elif is_appimage():
+        appdir = os.environ.get('APPDIR', '')
+        return os.path.join(appdir, 'usr', 'share', 'nyarchassistant', 'data')
+    else:
+        return "/usr/share/nyarchassistant/data"
+
+BASE_PATH = get_base_path()
+ACCHAN_PATH = os.path.join(BASE_PATH, "live2d/web/arch-chan.png")
+
+
 """
 Manage Newelle Application, create handlers, check integrity, manage settings...
 """
