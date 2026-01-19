@@ -24,7 +24,7 @@ mkdir -p "$BUILDDIR" "$APPDIR"
 #######################################
 
 echo ""
-echo "📦 Step 1/8: Installing build dependencies..."
+echo "📦 Step 1/10: Installing build dependencies..."
 
 sudo apt-get update
 
@@ -63,7 +63,7 @@ sudo rm -rf /var/lib/apt/lists/*
 ########################
 
 echo ""
-echo "🏗️  Step 2/8: Building application with Meson..."
+echo "🏗️  Step 2/10: Building application with Meson..."
 
 cd "$BUILDDIR"
 git clone --depth 1 -b "$BRANCH" "$REPO_URL"
@@ -89,7 +89,7 @@ echo "✅ Application built successfully"
 ################################
 
 echo ""
-echo "🐍 Step 3/8: Setting up Python environment..."
+echo "🐍 Step 3/10: Setting up Python environment..."
 
 python3 -m venv --system-site-packages "$APPDIR/usr/venv"
 source "$APPDIR/usr/venv/bin/activate"
@@ -148,7 +148,7 @@ echo "✅ Python environment ready"
 ###########################
 
 echo ""
-echo "📥 Step 4/8: Downloading external assets..."
+echo "📥 Step 4/10: Downloading external assets..."
 
 DATADIR="$APPDIR/usr/share/nyarchassistant/data"
 mkdir -p "$DATADIR/live2d/web" "$DATADIR/smart-prompts"
@@ -185,13 +185,43 @@ tar -xzf llamacpp.tar.gz -C "$APPDIR/usr/bin/" 2>/dev/null || true
 echo "✅ Assets downloaded"
 
 
+#####################################
+# Step 5: Prepare Desktop File    #
+#####################################
+
+echo "📝 Step 5/10: Preparing desktop file for AppImage..."
+
+# Copy the installed desktop file to AppDir root
+cp "$APPDIR/usr/share/applications/moe.nyarchlinux.assistant.desktop" \
+   "$APPDIR/moe.nyarchlinux.assistant.desktop"
+
+# Also copy the icon to AppDir root (appimagetool expects this too)
+ICON_PATH="$APPDIR/usr/share/icons/hicolor/scalable/apps/moe.nyarchlinux.assistant.svg"
+if [ -f "$ICON_PATH" ]; then
+    cp "$ICON_PATH" "$APPDIR/moe.nyarchlinux.assistant.svg"
+elif [ -f "$APPDIR/usr/share/icons/hicolor/256x256/apps/moe.nyarchlinux.assistant.png" ]; then
+    cp "$APPDIR/usr/share/icons/hicolor/256x256/apps/moe.nyarchlinux.assistant.png" \
+       "$APPDIR/moe.nyarchlinux.assistant.png"
+fi
+
+# Verify files exist
+if [ ! -f "$APPDIR/moe.nyarchlinux.assistant.desktop" ]; then
+    echo "❌ ERROR: Desktop file not found after copy!"
+    echo "Looking in: $APPDIR/usr/share/applications/"
+    ls -la "$APPDIR/usr/share/applications/" || true
+    exit 1
+fi
+
+echo "✅ Desktop file prepared"
+
+
 
 #############################
-# STEP 5: Bundle GNOME     #
+# STEP 6: Bundle GNOME     #
 #############################
 
 echo ""
-echo "📦 Step 5/8: Bundling GNOME Platform libraries..."
+echo "📦 Step 6/10: Bundling GNOME Platform libraries..."
 echo "  (Required for XFCE4 compatibility)"
 
 cd "$BUILDDIR"
@@ -235,11 +265,11 @@ fi
 echo "✅ GNOME runtime bundled"
 
 ##########################
-# STEP 6: Patches        #
+# STEP 7: Patches        #
 ##########################
 
 #echo ""
-#echo "🔧 Step 6/8: Applying patches..."
+#echo "🔧 Step 7/10: Applying patches..."
 #
 ## Patch flatpak-spawn check (critical - app crashes without this)
 #echo "  - Patching Flatpak detection..."
@@ -251,11 +281,11 @@ echo "✅ GNOME runtime bundled"
 #echo "✅ Patches applied"
 
 ##########################
-# STEP 7: Create AppRun  #
+# STEP 8: Create AppRun  #
 ##########################
 
 echo ""
-echo "📝 Step 7/8: Creating AppRun script..."
+echo "📝 Step 8/10: Creating AppRun script..."
 
 cat > "$APPDIR/AppRun" << 'APPRUN_EOF'
 #!/bin/bash
@@ -311,11 +341,11 @@ echo "✅ AppRun created"
 
 
 ############################
-# STEP 8: Optimization     #
+# STEP 9: Optimization     #
 ############################
 
 echo ""
-echo "⚡ Step 8/8: Optimizing AppImage size..."
+echo "⚡ Step 9/10: Optimizing AppImage size..."
 
 # Strip debug symbols
 echo "  - Stripping debug symbols..."
@@ -337,11 +367,11 @@ echo "✅ Optimization complete"
 
 
 ###############################
-# STEP 9: Create AppImage     #
+# STEP 10: Create AppImage    #
 ###############################
 
 echo ""
-echo "📦 Creating final AppImage..."
+echo "📦 Step 10/10: Creating final AppImage..."
 
 cd /tmp
 
