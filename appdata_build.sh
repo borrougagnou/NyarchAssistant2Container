@@ -1,6 +1,6 @@
 #!/bin/bash
-# Complete NyarchAssistant AppImage Builder
-# Bundles GNOME runtime for XFCE4 compatibility
+# NyarchAssistant AppImage Builder
+# Bundles GNOME runtime in case user isn't on gnome
 # Usage: ./build-nyarchassistant-appimage.sh
 
 set -e
@@ -9,9 +9,9 @@ echo "🚀 NyarchAssistant AppImage Build Started"
 echo "========================================="
 
 # Configuration
-BUILDDIR="/tmp/nyarch-build"
-APPDIR="/tmp/NyarchAssistant.AppDir"
-OUTPUT="$HOME/NyarchAssistant-1.2.0-x86_64.AppImage"
+BUILDDIR="$HOME/project/NyarchAssistant2Container/nyarch-build"
+APPDIR="$HOME/project/NyarchAssistant2Container/NyarchAssistant.AppDir"
+OUTPUT="$HOME/project/NyarchAssistant2Container/NyarchAssistant-1.2.0-x86_64.AppImage"
 REPO_URL="https://github.com/borrougagnou/NyarchAssistant2Container.git"
 
 # Cleanup
@@ -19,24 +19,43 @@ rm -rf "$BUILDDIR" "$APPDIR"
 mkdir -p "$BUILDDIR" "$APPDIR"
 
 #######################################
-# STEP 1: Install Build Dependencies #
+# STEP 1: Install Build Dependencies  #
 #######################################
 
 echo ""
 echo "📦 Step 1/8: Installing build dependencies..."
 
 sudo apt-get update
-sudo apt-get install -y --no-install-recommends \
-    build-essential meson ninja-build pkg-config git wget gettext \
-    python3-dev python3-pip python3-venv python3-gi python3-gi-cairo \
-    libgtk-4-dev libadwaita-1-dev libgtksourceview-5-dev \
-    libwebkitgtk-6.0-dev libvte-2.91-gtk4-dev libgirepository1.0-dev \
-    gir1.2-gtk-4.0 gir1.2-adw-1 gir1.2-gtksource-5 gir1.2-vte-3.91 gir1.2-webkit2-6.0 \
-    libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev \
-    libportaudio2 portaudio19-dev libpulse-dev libasound2-dev \
-    libjpeg62-turbo-dev libpng-dev zlib1g-dev libfreetype-dev \
-    desktop-file-utils libglib2.0-bin fuse libfuse2 \
-    libqhull-dev rustc cargo
+
+# Build essentials
+sudo apt-get install -y --no-install-recommends build-essential meson ninja-build pkg-config git wget gettext
+
+# Python (would like to use venv but there is an incompatibility problem :c)
+sudo apt-get install -y --no-install-recommends python3-dev python3-pip python3-venv \
+  python3-gi python3-gi-cairo
+
+# GTK4/GNOME development
+sudo apt-get install -y --no-install-recommends libgtk-4-dev libadwaita-1-dev libgtksourceview-5-dev \
+  libwebkitgtk-6.0-dev libvte-2.91-gtk4-dev libgirepository1.0-dev \
+  gir1.2-gtk-4.0 gir1.2-adw-1 gir1.2-gtksource-5 gir1.2-vte-3.91 gir1.2-webkit-6.0
+
+# SDL2 for pygame
+sudo apt-get install -y --no-install-recommends libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
+
+# Audio libraries
+sudo apt-get install -y --no-install-recommends libportaudio2 portaudio19-dev libpulse-dev libasound2-dev
+
+# Image processing
+sudo apt-get install -y --no-install-recommends libjpeg62-turbo-dev libpng-dev zlib1g-dev libfreetype-dev
+
+# Additional
+sudo apt-get install -y --no-install-recommends libqhull-dev rustc cargo desktop-file-utils libglib2.0-bin \
+  appstream-util
+
+sudo apt clean
+sudo rm -rf /var/lib/apt/lists/*
+
+
 
 ########################
 # STEP 2: Build App    #
@@ -46,7 +65,7 @@ echo ""
 echo "🏗️  Step 2/8: Building application with Meson..."
 
 cd "$BUILDDIR"
-git clone "$REPO_URL"
+git clone --depth 1 -b master "$REPO_URL"
 cd NyarchAssistant2Container
 
 # Build locales
@@ -62,6 +81,8 @@ DESTDIR="$APPDIR" meson install -C _build
 
 echo "✅ Application built successfully"
 
+
+
 ################################
 # STEP 3: Python Environment   #
 ################################
@@ -72,29 +93,58 @@ echo "🐍 Step 3/8: Setting up Python environment..."
 python3 -m venv --system-site-packages "$APPDIR/usr/venv"
 source "$APPDIR/usr/venv/bin/activate"
 
+echo "Installing Python dependencies..."
+
 pip install --no-cache-dir --upgrade pip setuptools wheel
-
-echo "Installing Python dependencies (this may take 10-15 minutes)..."
-
 pip install --no-cache-dir \
-    packaging six python-dateutil requests pillow requests-toolbelt \
-    gtts==2.5.4 pyaudio speechrecognition edge-tts \
-    voicevox-client==0.4.1 pydub \
-    openai==1.84.0 tiktoken gpt4all==2.8.2 ollama \
-    llama-index-core==0.12.38 llama-index-readers-file \
-    llama-cpp-python faiss-cpu model2vec \
-    livepng wordllama==0.3.9 pygame matplotlib scikit-learn \
-    newspaper3k lxml lxml-html-clean markdownify \
-    duckduckgo-search cssselect curl_cffi \
-    expandvars pylatexenc 'mcp[cli]==1.25.0' g4f==0.3.3.4
+    cssselect \
+    curl_cffi \
+    duckduckgo-search \
+    edge-tts \
+    expandvars \
+    faiss-cpu \
+    g4f==0.3.3.4 \
+    gpt4all==2.8.2 \
+    gtts==2.5.4 \
+    livepng \
+    llama-cpp-python \
+    llama-index-core==0.12.38 \
+    llama-index-readers-file \
+    lxml \
+    lxml-html-clean \
+    markdownify \
+    matplotlib \
+    'mcp[cli]==1.25.0' \
+    model2vec \
+    newspaper3k \
+    ollama \
+    openai==1.84.0 \
+    packaging \
+    pillow \
+    pyaudio \
+    pydub \
+    pygame \
+    pylatexenc \
+    python-dateutil \
+    requests \
+    requests-toolbelt \
+    scikit-learn \
+    six \
+    speechrecognition \
+    tiktoken \
+    voicevox-client==0.4.1 \
+    wordllama==0.3.9
+
 
 deactivate
 
 echo "✅ Python environment ready"
 
-#########################
-# STEP 4: External Assets#
-#########################
+
+
+###########################
+# STEP 4: External Assets #
+###########################
 
 echo ""
 echo "📥 Step 4/8: Downloading external assets..."
@@ -133,6 +183,9 @@ tar -xzf llamacpp.tar.gz -C "$APPDIR/usr/bin/" 2>/dev/null || true
 
 echo "✅ Assets downloaded"
 
+
+echo "TO THIS STEP IT'S WORKING OUT OF THE BOX"
+
 #############################
 # STEP 5: Bundle GNOME     #
 #############################
@@ -140,6 +193,8 @@ echo "✅ Assets downloaded"
 echo ""
 echo "📦 Step 5/8: Bundling GNOME Platform libraries..."
 echo "  (Required for XFCE4 compatibility)"
+
+cd "$BUILDDIR"
 
 mkdir -p "$APPDIR/usr/lib" "$APPDIR/usr/lib/girepository-1.0"
 
