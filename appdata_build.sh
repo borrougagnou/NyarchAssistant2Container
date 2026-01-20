@@ -44,7 +44,8 @@ sudo apt-get install -y --no-install-recommends libgtk-4-dev libadwaita-1-dev li
 sudo apt-get install -y --no-install-recommends libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
 
 # Audio libraries
-sudo apt-get install -y --no-install-recommends libportaudio2 portaudio19-dev libpulse-dev libasound2-dev
+sudo apt-get install -y --no-install-recommends libportaudio2 portaudio19-dev libpulse-dev libasound2-dev \
+  ffmpeg
 
 # Image processing
 sudo apt-get install -y --no-install-recommends libjpeg62-turbo-dev libpng-dev zlib1g-dev libfreetype-dev
@@ -381,16 +382,20 @@ if [ ! -f "appimagetool-x86_64.AppImage" ]; then
     chmod +x appimagetool-x86_64.AppImage
 fi
 
-# Extract to avoid FUSE issues
+# Give the FUSE3 support for appimagetool instead of FUSE2
+if [ ! -f "runtime-x86_64" ]; then
+    wget -q https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64
+fi
+
+# Extract to avoid FUSE issues during build
 if [ ! -d "appimagetool" ]; then
-    ./appimagetool-x86_64.AppImage --appimage-extract >/dev/null 2>&1
+    ./appimagetool-x86_64.AppImage --appimage-extract
     mv squashfs-root appimagetool
 fi
 
 # Create AppImage with compression
 echo "  - Packaging (this may take several minutes)..."
-#ARCH=x86_64 ./appimagetool/AppRun "$APPDIR" "$OUTPUT" >/dev/null 2>&1
-ARCH=x86_64 ./appimagetool/AppRun "$APPDIR" "$OUTPUT"
+ARCH=x86_64 ./appimagetool/AppRun --runtime-file /tmp/runtime-x86_64 "$APPDIR" "$OUTPUT"
 
 chmod +x "$OUTPUT"
 
