@@ -19,7 +19,10 @@ BRANCH="appimage"
 #TODO DEBUG
 
 # Cleanup
-rm -rf "$BUILDDIR" "$APPDIR" "$OUTPUT"
+rm -rf "$BUILDDIR" "$APPDIR" "$OUTPUT" "$APPDIR"
+#TODO DEBUG
+rm -rf $APPDIR-tmp
+#TODO DEBUG
 mkdir -p "$BUILDDIR" "$APPDIR"
 
 #######################################
@@ -163,13 +166,23 @@ BUILDDATADIR="$BUILDDIR/NyarchAssistant2Container/data"
 # Copy data asset
 if [ -d "$BUILDDATADIR" ]; then
     #TODO DEBUG
-    echo debug
+    echo debug1
+    echo "$BUILDDATADIR:"
     ls -a $BUILDDATADIR
-    ls -a $DATADIR
+    #echo "$DATADIR:"
+    #ls -a $DATADIR
     #TODO DEBUG
 
     mkdir -p "$APPDIR/usr/share/nyarchassistant/data"
     cp -r $BUILDDATADIR/* $DATADIR/.
+    #TODO DEBUG
+    echo debug2
+    echo "$BUILDDATADIR:"
+    ls -a $BUILDDATADIR
+    echo "$DATADIR:"
+    ls -a $DATADIR
+    #TODO DEBUG
+
 else
     echo "No data directory found in source!"
     exit 1
