@@ -162,8 +162,14 @@ BUILDDATADIR="$BUILDDIR/NyarchAssistant2Container/data"
 
 # Copy data asset
 if [ -d "$BUILDDATADIR" ]; then
+    #TODO DEBUG
+    echo debug
+    ls -a $BUILDDATADIR
+    ls -a $DATADIR
+    #TODO DEBUG
+
     mkdir -p "$APPDIR/usr/share/nyarchassistant/data"
-    cp -r "$BUILDDATADIR/*" "$APPDIR/usr/share/nyarchassistant/data/"
+    cp -r $BUILDDATADIR/* $DATADIR/.
 else
     echo "No data directory found in source!"
     exit 1
@@ -432,6 +438,7 @@ if [ ! -d "appimagetool" ]; then
 fi
 
 #TODO DEBUG
+rm -rf $APPDIR-tmp
 cp -r $APPDIR $APPDIR-tmp
 #TODO DEBUG
 
