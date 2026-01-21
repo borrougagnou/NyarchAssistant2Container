@@ -13,7 +13,10 @@ BUILDDIR="/tmp/nyarch-build"
 APPDIR="/tmp/NyarchAssistant.AppDir"
 OUTPUT="/tmp/NyarchAssistant-1.2.0-x86_64.AppImage"
 REPO_URL="https://github.com/borrougagnou/NyarchAssistant2Container.git"
-BRANCH="master"
+#BRANCH="master"
+#TODO DEBUG
+BRANCH="appimage"
+#TODO DEBUG
 
 # Cleanup
 rm -rf "$BUILDDIR" "$APPDIR" "$OUTPUT"
@@ -75,8 +78,11 @@ chmod +x build_locale.sh
 ./build_locale.sh || true
 
 # Configure and build
-meson setup _build --prefix=/usr --buildtype=release
-meson compile -C _build
+rm -rf _build
+#meson setup _build --prefix=/usr --buildtype=release
+meson setup _build --prefix=/usr --buildtype=release --reconfigure
+#meson compile -C _build
+
 
 # Install to AppDir
 DESTDIR="$APPDIR" meson install -C _build
@@ -144,17 +150,27 @@ echo "✅ Python environment ready"
 
 
 
-###########################
-# STEP 4: External Assets #
-###########################
+######################################
+# STEP 4: Assets and External Assets #
+######################################
 
 echo ""
 echo "📥 Step 4/10: Downloading external assets..."
 
 DATADIR="$APPDIR/usr/share/nyarchassistant/data"
-mkdir -p "$DATADIR/live2d/web" "$DATADIR/smart-prompts"
+BUILDDATADIR="$BUILDDIR/NyarchAssistant2Container/data"
+
+# Copy data asset
+if [ -d "$BUILDDATADIR" ]; then
+    mkdir -p "$APPDIR/usr/share/nyarchassistant/data"
+    cp -r "$BUILDDATADIR/*" "$APPDIR/usr/share/nyarchassistant/data/"
+else
+    echo "No data directory found in source!"
+    exit 1
+fi
 
 cd /tmp
+mkdir -p "$DATADIR/live2d/web" "$DATADIR/smart-prompts"
 
 # Live2D Viewer
 echo "  - Live2D viewer..."
@@ -414,6 +430,10 @@ if [ ! -d "appimagetool" ]; then
     ./appimagetool-x86_64.AppImage --appimage-extract
     mv squashfs-root appimagetool
 fi
+
+#TODO DEBUG
+cp -r $APPDIR $APPDIR-tmp
+#TODO DEBUG
 
 # Create AppImage with compression
 echo "  - Packaging (this may take several minutes)..."
