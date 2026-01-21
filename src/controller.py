@@ -38,13 +38,38 @@ from .handlers.avatar import AvatarHandler
 import subprocess
 
 def get_base_path():
+    # Detect environment variable set by entry point
+    if 'NYARCH_DATA_DIR' in os.environ:
+        data_dir = os.environ['NYARCH_DATA_DIR']
+        print(f"Using NYARCH_DATA_DIR: {data_dir}")
+        return data_dir
+
+    # Detect from module location
     if is_flatpak():
         return "/app/data"
-    elif is_appimage():
+
+    # Detect from Flatpak
+    if is_appimage():
         appdir = os.environ.get('APPDIR', '')
-        return os.path.join(appdir, 'usr', 'share', 'nyarchassistant', 'data')
-    else:
-        return "/usr/share/nyarchassistant/data"
+        if appdir:
+            return os.path.join(appdir, 'usr', 'share', 'nyarchassistant', 'data')
+
+    # Detect from AppImage
+    try:
+        module_dir = os.path.dirname(os.path.abspath(__file__))
+        pkgdatadir = os.path.dirname(module_dir)
+        prefix = os.path.dirname(os.path.dirname(pkgdatadir))
+        data_path = os.path.join(prefix, 'share', 'nyarchassistant', 'data')
+        if os.path.exists(data_path):
+            print(f"Detected data path: {data_path}")
+            return data_path
+    except Exception as e:
+        print(f"Module detection error: {e}")
+
+    # Fallback
+    return "/usr/share/nyarchassistant/data"
+
+
 
 BASE_PATH = get_base_path()
 ACCHAN_PATH = os.path.join(BASE_PATH, "live2d/web/arch-chan.png")
