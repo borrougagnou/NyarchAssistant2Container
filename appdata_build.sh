@@ -293,11 +293,17 @@ cat > "$APPDIR/AppRun" << 'APPRUN_EOF'
 # AppRun script for NyarchAssistant
 # Provides isolated environment with GNOME runtime
 
+set -e
+
 SELF=$(readlink -f "$0")
 HERE=${SELF%/*}
 
+echo "Starting NyarchAssistant AppImage" >&2
+echo "   AppDir from AppRun: $HERE" >&2
+
 # APPDIR for application path detection
 export APPDIR="$HERE"
+echo "APPDIR FROM AppRun= $APPDIR" >&2
 
 # Python environment
 # DO NOT set PYTHONHOME when using venv - it breaks stdlib location!
@@ -305,16 +311,19 @@ export APPDIR="$HERE"
 export PATH="$HERE/usr/venv/bin:$HERE/usr/bin:$PATH"
 
 # Add venv's site-packages to PYTHONPATH for imports
-export PYTHONPATH="$HERE/usr/venv/lib/python3.13/site-packages:$HERE/usr/share/nyarchassistant:$HERE/usr/lib/python3/dist-packages:${PYTHONPATH}"
+export PYTHONPATH="$HERE/usr/venv/lib/python3.13/site-packages:$HERE/usr/lib/python3.13/site-packages:$HERE/usr/share/nyarchassistant:${PYTHONPATH}"
 
 export VIRTUAL_ENV="$HERE/usr/venv"
 export PYTHONUSERBASE="$HERE/usr/venv"
+unset PYTHONHOME
 
-# GTK/GNOME environment
+# GTK/GNOME runtime
 export GDK_BACKEND=wayland,x11  # Wayland preferred, X11 fallback
-export XDG_DATA_DIRS="$HERE/usr/share:${XDG_DATA_DIRS:-/usr/share:/usr/local/share}"
+export XDG_DATA_DIRS="$HERE/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 export GI_TYPELIB_PATH="$HERE/usr/lib/girepository-1.0:${GI_TYPELIB_PATH}"
 export LD_LIBRARY_PATH="$HERE/usr/lib:${LD_LIBRARY_PATH}"
+export GDK_PIXBUF_MODULEDIR="$HERE/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders"
+export GDK_PIXBUF_MODULE_FILE="$HERE/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"
 
 # GSettings
 export GSETTINGS_SCHEMA_DIR="$HERE/usr/share/glib-2.0/schemas"
@@ -331,8 +340,21 @@ export FLATPAK_DISABLE=1
 # Vulkan (for llama-cpp-python GPU acceleration)
 export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json:/usr/share/vulkan/icd.d/radeon_icd.json
 
+echo "   APPDIR=$APPDIR" >&2
+
+# Verify critical files
+if [ ! -f "$HERE/usr/bin/nyarchassistant" ]; then
+    echo "❌ ERROR: Binary nyarchassistant not found!" >&2
+    exit 1
+fi
+
+if [ ! -f "$HERE/usr/share/nyarchassistant/nyarchassistant.gresource" ]; then
+    echo "❌ ERROR: GResource not found!" >&2
+    exit 1
+fi
+
 # Execute application
-exec "$HERE/usr/venv/bin/python" "$HERE/usr/bin/nyarchassistant" "$@"
+exec "$HERE/usr/venv/bin/python3" "$HERE/usr/bin/nyarchassistant" "$@"
 APPRUN_EOF
 
 chmod +x "$APPDIR/AppRun"
