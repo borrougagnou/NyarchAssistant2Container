@@ -31,26 +31,36 @@ VERSION = '@VERSION@'
 def get_prefix():
     # Check if Flatpak
     if os.path.exists('/.flatpak-info'):
-        print("Flatpak detected")
+        print("Flatpak detected", file=sys.stderr)
         return '/app'
 
     # Check if AppImage
-    if 'APPDIR' in os.environ:
-        prefix = os.path.join(os.environ['APPDIR'], 'usr')
-        print("AppImage detected")
+    appdir = os.environ.get('APPDIR', '')
+    if appdir:
+        prefix = os.path.join(appdir, 'usr')
+        print(f"AppImage detected: APPDIR={appdir}", file=sys.stderr)
+        print(f"   prefix: {prefix}", file=sys.stderr)
         if os.path.exists(prefix):
             return prefix
 
-    # Try to detect dynamically from script location
-    script_path = os.path.abspath(__file__)
-    script_dir = os.path.dirname(script_path)
-    if script_dir.endswith('/bin'):
-        prefix = os.path.dirname(script_dir)
-        if os.path.exists(os.path.join(prefix, 'share')):
-            print("Dynamic path detected")
-            return prefix
+    # Detect from script location (works for regular installations)
+    try:
+        script_path = os.path.realpath(__file__)
+        script_dir = os.path.dirname(script_path)
+        
+        if script_dir.endswith('/bin'):
+            prefix = os.path.dirname(script_dir)
+            share_dir = os.path.join(prefix, 'share', 'nyarchassistant')
+            if os.path.exists(share_dir):
+                print(f"Dynamic path detected", file=sys.stderr)
+                print(f"   prefix: {prefix}", file=sys.stderr)
+                return prefix
+    except Exception as e:
+        print(f"Error detecting path: {e}", file=sys.stderr)
 
     # Fallback to build-time prefix
+    print(f"No dynamic prefix found", file=sys.stderr)
+    print(f"Using build-time prefix: @prefix@", file=sys.stderr)
     return '@prefix@'
 
 
@@ -59,10 +69,25 @@ prefix = get_prefix()
 pkgdatadir = os.path.join(prefix, 'share', 'nyarchassistant')
 localedir = os.path.join(prefix, 'share', 'locale')
 
+print(f"✅ Prefix: {prefix}", file=sys.stderr)
+print(f"✅ Pkgdatadir: {pkgdatadir}", file=sys.stderr)
+print(f"✅ Localedir: {localedir}", file=sys.stderr)
+print(f"✅ Directory exists: {os.path.exists(pkgdatadir)}", file=sys.stderr)
+
+# Fallback handling if paths don't exist
+if not os.path.exists(pkgdatadir):
+    print(f"❌ ERROR: Package data directory not found!", file=sys.stderr)
+    print(f"   APPDIR env: {os.environ.get('APPDIR', '(not set)')}", file=sys.stderr)
+    sys.exit(1)
+
+
 if not os.path.exists(pkgdatadir):
     pkgdatadir = '@pkgdatadir@'
 if not os.path.exists(localedir):
     localedir = '@localedir@'
+
+print(f"Using pkgdatadir: {pkgdatadir}", file=sys.stderr)
+print(f"Using localedir: {localedir}", file=sys.stderr)
 
 sys.path.insert(1, pkgdatadir)
 signal.signal(signal.SIGINT, signal.SIG_DFL)
@@ -74,17 +99,34 @@ if __name__ == '__main__':
     import gi
 
     from gi.repository import Gio
+    gi.require_version('Gtk', '4.0')
+    gi.require_version('Adw', '1')
 
     gresource_path = os.path.join(pkgdatadir, 'nyarchassistant.gresource')
+    print(f"🔧 Loading GResource: {gresource_path}", file=sys.stderr)
+    
     if not os.path.exists(gresource_path):
         print(f"ERROR: GResource not found!", file=sys.stderr)
         print(f"  Expected: {gresource_path}", file=sys.stderr)
         print(f"  Detected prefix: {prefix}", file=sys.stderr)
         print(f"  APPDIR: {os.environ.get('APPDIR', '(not set)')}", file=sys.stderr)
+        if os.path.exists(pkgdatadir):
+            print(f"   Directory contents:", file=sys.stderr)
+            for item in os.listdir(pkgdatadir):
+                print(f"     - {item}", file=sys.stderr)
         sys.exit(1)
 
-    resource = Gio.Resource.load(gresource_path)
-    resource._register()
+    try:
+        resource = Gio.Resource.load(gresource_path)
+        resource._register()
+        print("GResource loaded successfully", file=sys.stderr)
+    except Exception as e:
+        print(f"ERROR loading GResource: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    # Set data directory for controller.py
+    os.environ['NYARCH_DATA_DIR'] = os.path.join(pkgdatadir, 'data')
+    print(f"Set NYARCH_DATA_DIR={os.environ['NYARCH_DATA_DIR']}", file=sys.stderr)
 
     from nyarchassistant import main
     sys.exit(main.main(VERSION))
